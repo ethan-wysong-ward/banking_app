@@ -12,6 +12,10 @@ public class AccountService {
         this.repo = repo;
     }
 
+    public Account getAccountById(Long id) {
+        return repo.findById(id).orElseThrow();
+    }
+
     public Account createAccount(String owner, double initialDeposit) {
         return repo.save(new Account(owner, initialDeposit));
     }

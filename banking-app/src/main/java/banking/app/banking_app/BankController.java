@@ -1,6 +1,7 @@
 package banking.app.banking_app;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,11 @@ public class BankController {
 
     public BankController(AccountService service) {
         this.service = service;
+    }
+
+    @GetMapping("/{id}")
+    public Account getAccount(@PathVariable Long id) {
+        return service.getAccountById(id);
     }
 
     @PostMapping("/account")
